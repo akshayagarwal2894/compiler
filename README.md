@@ -3,22 +3,30 @@
 **Output**:The intermediate code as three address instructions in two versions
 
 1.with backpatching backcode.txt
+
 2.without backpatching output.txt
 
 
 **DESCRIPTION OF LEX FILE**
-
+```
 ------------------------lexfile.l------------------------------
+
 ------DECLARATIONS------
+
 digit,letter are the variables defined to hold the digit character class [0-9] and letters [A-Za-z] respectively
 other declared variables are as understood by their name
+
 -----RULES-------
+
 first rule ignores the backspaces,tabs and newlines
+
 In the same way all  the other rules matches the input lexeme with the patterns as specified and returns the respective tokens to be processed by yacc .
+
 For identifiers the lexeme is stored in id.place and for integers they are stored in id.place and id.a .
 For relational operator and logical operator they are stored in yylval.rel.op.
 
 ---------------------yaccfile.y-------------------------------------
+
 ---------------DESCRIPTION OF YACC FILE----------------------
 
 -----------------------functions------------------
@@ -69,8 +77,8 @@ If either of the list is empty it returns the other non empty list and if both a
 This function adds the given codeLineEntry to list and return the head after adding.
 This function performs same operation as makelist function when its first argument is NULL ie creates new list with only one Node of entry 
 and returns it.
-----------------------------------------------------------------------------------------------------------------------------------------
------------------Variables----------------
+
+Variables
 
 currentLine:series of line numbers for three address instructions.
 count_t: for new_temp generations
@@ -80,8 +88,8 @@ ch:for label storage
 buffer,buffer1,buffer2,buffer3 : for code strorage 
 yyin:yacc variable for taking input from the file
 output : FILE * pointer for opening file for storing other version of output(with B.true and B.false)
------------------------------------------------------------------------------------------------------------------------------------------
------------structures---------------
+
+structures
 
 1.struct CodeLineEntry
 for storing code,gotoL for 3 address instructions
@@ -124,7 +132,6 @@ This structure is used for intermediate label generation for backpatching
 
 Out of these 1,2,6 are for backpatching and 3,4,5 are related to code
 3,4,5,6 are defined in yacc %union 
-----------------------------------------------------------------------------------------------------------------------------
 
 TOKENS DEFINATIONS AS UNDERSTOOD FROM YACC FILE
 %token is used to declare the token
@@ -132,8 +139,6 @@ TOKENS DEFINATIONS AS UNDERSTOOD FROM YACC FILE
 
 AS we go down in declarations of these %left and %right the precedence of operators increases.
 Yacc parses the input according to these and resolves conflicts.
-
------------------------------------------------------------------------------------------------------------------------------
 
 ---------------GRAMMAR RULES--------------------
 
@@ -170,7 +175,7 @@ WHILE is same as logical expr followed by block and M used for backpatching
 
 Switch takes any expr as its value where expr can be assignment or arithmetic and case is zero or more cases and default.
 Each case statement and default is followed by optional break
-----------------------------------------------------------------------
+
 arithmetic expression can be of form arith_expr operator arith_expr where operator can be +,-,*,/,@,^,|,&,~.
 terminals associated are NUM and IDENTIFIER
 
@@ -183,8 +188,6 @@ arith_expr or simply arith_expr.
 
 M and N productions are for backpatching
 
----------------------------------------------------------------------------------------------------------------------------------------
-
 How to Run the program:
 First step is to enter the program in code.txt if not present create it in same folder and enter your input there.
 1.make
@@ -194,5 +197,4 @@ this automatically compiles lexfile.l and produces lex.yy.c and compiles yaccfil
 After this two files are being created one output.txt containing intermediate code without backpatching which prints B.true and B.false as 
 targets of jumps
 The second file is backcode.txt which is intermediate code along with backpatching.
-
------------------------------------------------------------------------------------------------------------------------------------
+```
