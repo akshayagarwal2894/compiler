@@ -1,12 +1,13 @@
-Input : The C code having subset of C language constructs code.txt
+**Input** : The C code having subset of C language constructs code.txt
 
-Output:The intermediate code as three address instructions in two versions
+**Output**:The intermediate code as three address instructions in two versions
 
 1.with backpatching backcode.txt
 2.without backpatching output.txt
 
 
-DESCRIPTION OF LEX FILE
+**DESCRIPTION OF LEX FILE**
+
 ------------------------lexfile.l------------------------------
 ------DECLARATIONS------
 digit,letter are the variables defined to hold the digit character class [0-9] and letters [A-Za-z] respectively
