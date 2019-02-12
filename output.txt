@@ -1,0 +1,18 @@
+main()l3
+   if a > 4 goto B.true
+ goto B.false
+ B.true :
+ t9 = 5 * 6
+t10 = 4 / 3
+t11 = 7 - t10
+t12 = t11 @ 9
+ t13 = t9 + t12
+a += t13
+l2
+ goto l3
+
+B.false :
+main()l6
+l7
+l8
+
